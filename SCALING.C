@@ -1,0 +1,49 @@
+#include<stdio.h>
+#include<conio.h>
+#include<graphics.h>
+int gd=DETECT,gm;
+int n,x[100],y[100],i;
+float sfx,sfy;
+void draw();
+void scal();
+
+void main()
+{
+//int gd=DETECT,gm;
+//int n,xs[100],ys[100],i,ty,tx;
+
+  printf("Enter number of sides of polygon: ");
+  scanf("%d",&n);
+  printf("Enter the co-rdinates:x,y for each vertex ");
+  for(i=0; i<n; i++)
+//  printf("Enter distances for translation (in x and y direction):");
+  scanf("%d%d",&x[i],&y[i]);
+  printf("Enter distances for scal (in x and y direction):");
+  scanf("%f%f",&sfx,&sfy);
+  initgraph(&gd,&gm,"C:\\TURBOC3\\BGI");
+  //drawing original polygon in RED color
+  setcolor(RED);
+  draw();
+  //doing translation
+  scal();
+  setcolor(YELLOW);
+  draw();
+  getch();
+}
+
+void draw()
+{
+  for(i=0; i<n; i++)
+   line(x[i],y[i],x[(i+1)%n],y[(i+1)%n]);
+}
+
+void scal()
+{
+  for(i=0; i<n; i++)
+  {
+ //  x[i]=x[0]+(int)((float)(x[i]-x[0])*sfx);
+//   y[i]=y[0]+(int)((float)(y[i]-y[0])*sfy);
+     x[i]=x[i]*sfx;
+     y[i]=y[i]*sfy;
+  }
+ }
